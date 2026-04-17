@@ -12,56 +12,59 @@ st.set_page_config(page_title="TRACE | Forensic Suite", layout="wide")
 # Safe CSS injection
 st.markdown("""
     <style>
-    /* 1. MAIN BACKGROUND: Deep, rich midnight teal - highly professional */
+    /* 1. Import a professional font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    /* 2. Global Font & Background */
     .stApp {
-        background-color: #002B36 !important;
+        background-color: #0F172A !important; /* Deep Slate Blue-Black */
+        font-family: 'Inter', sans-serif !important;
     }
 
-    /* 2. TEXT (Labels like 'Mobile Number', 'OTP') */
-    label, p, span {
-        color: #93A1A1 !important; /* Soft, light grey-teal */
-        font-family: 'Inter', sans-serif !important;
+    /* 3. Heading Colors (TRACE / Data Intake) */
+    h1, h2, h3 {
+        color: #F8FAFC !important; /* Off-White for high readability */
+        font-weight: 700 !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    /* 4. Text & Label Colors */
+    label, p, span, .stMarkdown {
+        color: #94A3B8 !important; /* Muted Slate Grey */
         font-weight: 500 !important;
     }
 
-    /* 3. MAIN HEADING (e.g., TRACE) */
-    h1, h2, h3 {
-        color: #FFFFFF !important; /* Pure White */
-        font-family: 'Open Sans', sans-serif !important;
-        font-weight: 700 !important;
-    }
-
-    /* 4. INPUT FIELDS (Full width and smooth) */
+    /* 5. Input Field Styling (Sleek & Clean) */
     .stTextInput > div > div > input {
-        background-color: #FFFFFF !important; /* Crisp white input */
-        color: #002B36 !important; /* Dark teal text inside */
-        border-radius: 6px !important;
-        border: 1px solid #93A1A1 !important;
-        height: 45px !important; /* Slightly taller for a better feel */
+        background-color: #1E293B !important; /* Slightly lighter slate */
+        color: #FFFFFF !important;
+        border: 1px solid #334155 !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
     }
 
-    /* 5. THE BUTTON: High-contrast professional accent */
+    /* 6. Professional Button (Subtle & Sharp) */
     .stButton > button {
-        background-color: #2AA198 !important; /* Bright, attractive teal accent */
-        color: #FFFFFF !important; /* White text for contrast */
+        background-color: #3B82F6 !important; /* Professional Blue Accent */
+        color: #FFFFFF !important;
         border: none !important;
-        border-radius: 6px !important;
+        border-radius: 8px !important;
         font-weight: 600 !important;
-        padding: 0.75rem 2rem !important;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
-        transition: all 0.3s ease !important;
+        padding: 0.6rem 2rem !important;
+        width: auto !important;
+    }
+
+    /* 7. File Uploader Fix (Matches the theme) */
+    [data-testid="stFileUploader"] section {
+        background-color: #1E293B !important;
+        border: 1px dashed #334155 !important;
+        border-radius: 8px !important;
     }
     
-    /* 6. BUTTON HOVER EFFECT: To make it interactive */
-    .stButton > button:hover {
-        background-color: #38C9BE !important; /* Lighter teal on hover */
-        transform: translateY(-2px);
-    }
-    
-    /* 7. Input focus (When clicking) */
-    .stTextInput > div > div > input:focus {
-        border: 2px solid #2AA198 !important;
-        box-shadow: none !important;
+    /* Small fix for the 'upload' button inside uploader */
+    [data-testid="stFileUploader"] button {
+        background-color: #334155 !important;
+        color: white !important;
     }
     </style>
     """, unsafe_allow_html=True)
