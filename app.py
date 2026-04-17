@@ -12,33 +12,56 @@ st.set_page_config(page_title="TRACE | Forensic Suite", layout="wide")
 # Safe CSS injection
 st.markdown("""
     <style>
-    /* 1. Background - Change to a deep dark blue */
+    /* 1. MAIN BACKGROUND: Deep, rich midnight teal - highly professional */
     .stApp {
-        background-color: #001f3f !important;
+        background-color: #002B36 !important;
     }
 
-    /* 2. Main Heading Color (st.title or st.header) */
+    /* 2. TEXT (Labels like 'Mobile Number', 'OTP') */
+    label, p, span {
+        color: #93A1A1 !important; /* Soft, light grey-teal */
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+    }
+
+    /* 3. MAIN HEADING (e.g., TRACE) */
     h1, h2, h3 {
-        color: #FFFFFF !important;
-        font-weight: bold !important;
+        color: #FFFFFF !important; /* Pure White */
+        font-family: 'Open Sans', sans-serif !important;
+        font-weight: 700 !important;
     }
 
-    /* 3. Input Labels (Mobile Number, etc.) */
-    label, p {
-        color: #AAAAAA !important;
-    }
-
-    /* 4. Input fields - Light grey/white for contrast */
+    /* 4. INPUT FIELDS (Full width and smooth) */
     .stTextInput > div > div > input {
-        background-color: #F0F2F6 !important;
-        color: #000000 !important;
+        background-color: #FFFFFF !important; /* Crisp white input */
+        color: #002B36 !important; /* Dark teal text inside */
+        border-radius: 6px !important;
+        border: 1px solid #93A1A1 !important;
+        height: 45px !important; /* Slightly taller for a better feel */
     }
 
-    /* 5. The Button */
+    /* 5. THE BUTTON: High-contrast professional accent */
     .stButton > button {
-        background-color: #FFFFFF !important;
-        color: #001f3f !important;
+        background-color: #2AA198 !important; /* Bright, attractive teal accent */
+        color: #FFFFFF !important; /* White text for contrast */
         border: none !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
+        padding: 0.75rem 2rem !important;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* 6. BUTTON HOVER EFFECT: To make it interactive */
+    .stButton > button:hover {
+        background-color: #38C9BE !important; /* Lighter teal on hover */
+        transform: translateY(-2px);
+    }
+    
+    /* 7. Input focus (When clicking) */
+    .stTextInput > div > div > input:focus {
+        border: 2px solid #2AA198 !important;
+        box-shadow: none !important;
     }
     </style>
     """, unsafe_allow_html=True)
