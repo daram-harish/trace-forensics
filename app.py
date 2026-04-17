@@ -12,10 +12,34 @@ st.set_page_config(page_title="TRACE | Forensic Suite", layout="wide")
 # Safe CSS injection
 st.markdown("""
     <style>
-    .stApp { background-color: #000000 !important; }
-    label { color: #888888 !important; }
-    .stTextInput > div > div > input { background-color: #F0F2F6 !important; color: #000000 !important; }
-    .stButton > button { background-color: #FFFFFF !important; color: #000000 !important; }
+    /* 1. Background - Change to a deep dark blue */
+    .stApp {
+        background-color: #001f3f !important;
+    }
+
+    /* 2. Main Heading Color (st.title or st.header) */
+    h1, h2, h3 {
+        color: #FFFFFF !important;
+        font-weight: bold !important;
+    }
+
+    /* 3. Input Labels (Mobile Number, etc.) */
+    label, p {
+        color: #AAAAAA !important;
+    }
+
+    /* 4. Input fields - Light grey/white for contrast */
+    .stTextInput > div > div > input {
+        background-color: #F0F2F6 !important;
+        color: #000000 !important;
+    }
+
+    /* 5. The Button */
+    .stButton > button {
+        background-color: #FFFFFF !important;
+        color: #001f3f !important;
+        border: none !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
