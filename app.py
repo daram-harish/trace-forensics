@@ -10,7 +10,14 @@ from PIL import Image
 st.set_page_config(page_title="TRACE | Forensic Suite", layout="wide")
 
 # Safe CSS injection
-st.markdown("<style>.stApp { background-color: #05070a; color: #e0e0e0; } .main-card { background: #11141a; padding: 25px; border-radius: 15px; border: 1px solid #333; } .layer-card { background: #0d1117; padding: 15px; border-radius: 10px; border-left: 4px solid #00f2ff; margin-bottom: 12px; }</style>", unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .stApp { background-color: #000000 !important; }
+    label { color: #888888 !important; }
+    .stTextInput > div > div > input { background-color: #F0F2F6 !important; color: #000000 !important; }
+    .stButton > button { background-color: #FFFFFF !important; color: #000000 !important; }
+    </style>
+    """, unsafe_allow_html=True)
 
 if 'screen' not in st.session_state:
     st.session_state['screen'] = 'login'
