@@ -6,7 +6,7 @@ import io
 from logic import get_file_hash, scan_metadata, perform_ela
 from PIL import Image
 
-# --- 1. CONFIG & STYLE (Blue Theme from Screenshot) ---
+# --- 1. CONFIG & STYLE ---
 st.set_page_config(page_title="TRACE | Forensic Suite", layout="wide")
 
 st.markdown("""
@@ -14,15 +14,31 @@ st.markdown("""
     .stApp { background-color: #1c2e4a; color: white; }
     .main-card { background: #11141a; padding: 25px; border-radius: 15px; border: 1px solid #333; }
     .layer-card { background: #0d1117; padding: 15px; border-radius: 10px; border-left: 4px solid #00f2ff; margin-bottom: 12px; }
+    
+    /* HIGH CONTRAST FILE UPLOADER */
+    div[data-testid="stFileUploader"] {
+        background-color: #0d1117 !important;
+        border: 2px dashed #00f2ff !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+    }
+    div[data-testid="stFileUploader"] label {
+        color: #00f2ff !important;
+        font-weight: bold !important;
+    }
+    div[data-testid="stFileUploader"] section div {
+        color: #ffffff !important;
+    }
+
     .stTextInput > label { color: white !important; font-size: 1.1rem; }
     h1, h3 { text-align: center; color: white; }
-    /* Green Login Button */
-    div.stButton > button:first-child {
-        background-color: #4CAF50;
-        color: white;
+    div.stButton > button {
+        background-color: #4CAF50 !important;
+        color: white !important;
         width: 100%;
         height: 3em;
         font-weight: bold;
+        border: none;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -30,27 +46,22 @@ st.markdown("""
 if 'screen' not in st.session_state:
     st.session_state['screen'] = 'login'
 
-# --- 2. SCREEN 1: OPENING PAGE ---
+# --- 2. SCREEN 1: LOGIN ---
 if st.session_state['screen'] == 'login':
     st.markdown("<h1>TRACE</h1>", unsafe_allow_html=True)
-    
     col_a, col_b, col_c = st.columns([2,1,2])
     with col_b:
         try:
             st.image("logo.png", use_container_width=True)
         except:
             st.info("Logo Placeholder")
-
     st.write("---")
-    
     col_l1, col_l2, col_l3 = st.columns([1,2,1])
     with col_l2:
-        st.markdown("<h3>M-Trace Mobile Number Verification</h3>", unsafe_allow_html=True)
+        st.markdown("<h3> Trace Mobile Number Verification</h3>", unsafe_allow_html=True)
         mobile = st.text_input("Mobile Number", placeholder="+91 XXXX XXX XXX")
-        
         st.markdown("<h3>Verification Code</h3>", unsafe_allow_html=True)
         otp = st.text_input("OTP Code", type="password", placeholder="Enter 4-digit code")
-        
         st.write("## ")
         if st.button("LOGIN"):
             if otp == "1234":
@@ -61,25 +72,23 @@ if st.session_state['screen'] == 'login':
 
 # --- 3. SCREEN 2: DASHBOARD ---
 elif st.session_state['screen'] == 'dashboard':
-    st.title("📂 Data Intake")
+    st.title("📂 Data Input")
     uploaded_file = st.file_uploader("Upload Image or Video", type=['jpg','png','jpeg','mp4','mov'])
-    
     if uploaded_file:
         is_video = uploaded_file.type.startswith('video')
         progress = st.progress(0)
         for i in range(101):
-            time.sleep(0.002)
+            time.sleep(0.005)
             progress.progress(i)
         
         file_bytes = uploaded_file.getvalue()
         sha = get_file_hash(file_bytes)
         sig = scan_metadata(uploaded_file)
-        
         if not is_video:
             heatmap, p_score = perform_ela(uploaded_file)
         else:
             heatmap, p_score = None, 88
-            
+        
         is_bad = "Adobe" in sig or p_score < 75 or "fake" in uploaded_file.name.lower()
         trust = int(p_score if not is_bad else p_score * 0.7)
         
@@ -93,14 +102,12 @@ elif st.session_state['screen'] == 'dashboard':
             st.session_state['screen'] = 'verdict'
             st.rerun()
 
-# --- 4. SCREEN 4: VERDICT ---
+# --- 4. SCREEN 3: VERDICT ---
 elif st.session_state['screen'] == 'verdict':
     res = st.session_state['results']
     color = "#ff4b4b" if res['is_bad'] else "#00ffcc"
-    
     st.title("⚖️ Truth Dashboard")
     col_v, col_e = st.columns([1, 1.2])
-    
     with col_v:
         st.markdown("<div class='main-card'>", unsafe_allow_html=True)
         opts = {
@@ -112,7 +119,6 @@ elif st.session_state['screen'] == 'verdict':
         st_echarts(options=opts, height="300px")
         st.markdown(f"<h2 style='color:{color}; text-align:center;'>{'RESULT: MANIPULATED' if res['is_bad'] else 'RESULT: ORIGINAL'}</h2>", unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
-        
         st.subheader("🔬 Visual Comparison")
         c1, c2 = st.columns(2)
         if res['is_video']:
