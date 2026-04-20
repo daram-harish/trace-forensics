@@ -15,21 +15,20 @@ st.markdown("""
     .main-card { background: #11141a; padding: 25px; border-radius: 15px; border: 1px solid #333; }
     .layer-card { background: #0d1117; padding: 15px; border-radius: 10px; border-left: 4px solid #00f2ff; margin-bottom: 12px; }
     
-    /* --- FIXED UPLOAD AREA --- */
+    /* HIGH CONTRAST FILE UPLOADER */
     div[data-testid="stFileUploader"] {
         background-color: #0d1117 !important;
         border: 2px dashed #00f2ff !important;
-        border-radius: 12px;
-        padding: 20px;
+        border-radius: 12px !important;
+        padding: 20px !important;
     }
     div[data-testid="stFileUploader"] label {
         color: #00f2ff !important;
-        font-weight: bold;
+        font-weight: bold !important;
     }
-    div[data-testid="stFileUploader"] section div div {
+    div[data-testid="stFileUploader"] section div {
         color: #ffffff !important;
     }
-    /* -------------------------- */
 
     .stTextInput > label { color: white !important; font-size: 1.1rem; }
     h1, h3 { text-align: center; color: white; }
