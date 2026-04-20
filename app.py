@@ -14,6 +14,18 @@ st.markdown("""
     .stApp { background-color: #1c2e4a; color: white; }
     .main-card { background: #11141a; padding: 25px; border-radius: 15px; border: 1px solid #333; }
     .layer-card { background: #0d1117; padding: 15px; border-radius: 10px; border-left: 4px solid #00f2ff; margin-bottom: 12px; }
+    
+    /* --- UPLOAD VISIBILITY FIX --- */
+    .stFileUploader {
+        background-color: #111a2e !important;
+        border: 2px dashed #00f2ff !important;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .stFileUploader label {
+        color: #ffffff !important;
+        font-weight: bold;
+    }
     .stTextInput > label { color: white !important; font-size: 1.1rem; }
     h1, h3 { text-align: center; color: white; }
     /* Green Login Button */
