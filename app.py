@@ -29,8 +29,12 @@ st.markdown("""
     .stFileUploader section {
         color: #ffffff !important; /* Ensures drag/drop text is white */
     }
-    
-    /* --- HIGH CONTRAST FILE UPLOADER --- */
+   st.markdown("""
+    <style>
+    /* 1. Global Page Background */
+    .stApp { background-color: #05070a; color: #e0e0e0; }
+
+    /* 2. HIGH CONTRAST FILE UPLOADER */
     /* Forces a solid, distinct background color */
     div[data-testid="stFileUploader"] {
         background-color: #1a1f2e !important; 
@@ -54,7 +58,7 @@ st.markdown("""
         font-weight: bold; 
     }
     </style>
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True) 
 
     div[data-testid="stFileUploader"] {
         background-color: #11141a !important; 
