@@ -31,6 +31,20 @@ st.markdown("""
     }
     
     /* --- HIGH CONTRAST FILE UPLOADER --- */
+
+    div[data-testid="stFileUploader"] {
+        background-color: #11141a !important; 
+        border: 2px dashed #00f2ff !important; 
+        border-radius: 15px !important;
+        padding: 30px !important;
+    }
+    
+    /* This makes the "Upload Media" label stand out */
+    div[data-testid="stFileUploader"] label {
+        color: #00f2ff !important;
+        font-weight: bold !important;
+        font-size: 1.2rem !important;
+    }
     .stFileUploader {
         background-color: #0d1117 !important; /* Deep dark background */
         border: 2px dashed #00f2ff !important; /* Neon cyan border */
