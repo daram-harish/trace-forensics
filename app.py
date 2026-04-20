@@ -12,6 +12,21 @@ st.set_page_config(page_title="TRACE | Forensic Suite", layout="wide")
 st.markdown("""
     <style>
     .stApp { background-color: #1c2e4a; color: white; }
+    
+    /* --- HIGH CONTRAST FILE UPLOADER --- */
+    .stFileUploader {
+        background-color: #0d1117 !important; /* Deep dark background */
+        border: 2px dashed #00f2ff !important; /* Neon cyan border */
+        border-radius: 12px;
+        padding: 20px;
+    }
+    .stFileUploader label {
+        color: #00f2ff !important; /* Neon cyan text */
+        font-weight: bold;
+    }
+    .stFileUploader section div div {
+        color: #ffffff !important; /* File name/instructions color */
+    }
     .main-card { background: #11141a; padding: 25px; border-radius: 15px; border: 1px solid #333; }
     .layer-card { background: #0d1117; padding: 15px; border-radius: 10px; border-left: 4px solid #00f2ff; margin-bottom: 12px; }
     
