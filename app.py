@@ -58,7 +58,7 @@ if st.session_state['screen'] == 'login':
     st.write("---")
     col_l1, col_l2, col_l3 = st.columns([1,2,1])
     with col_l2:
-        st.markdown("<h3>M-Trace Mobile Number Verification</h3>", unsafe_allow_html=True)
+        st.markdown("<h3> Trace Mobile Number Verification</h3>", unsafe_allow_html=True)
         mobile = st.text_input("Mobile Number", placeholder="+91 XXXX XXX XXX")
         st.markdown("<h3>Verification Code</h3>", unsafe_allow_html=True)
         otp = st.text_input("OTP Code", type="password", placeholder="Enter 4-digit code")
@@ -72,7 +72,7 @@ if st.session_state['screen'] == 'login':
 
 # --- 3. SCREEN 2: DASHBOARD ---
 elif st.session_state['screen'] == 'dashboard':
-    st.title("📂 Data Intake")
+    st.title("📂 Data Input")
     uploaded_file = st.file_uploader("Upload Image or Video", type=['jpg','png','jpeg','mp4','mov'])
     if uploaded_file:
         is_video = uploaded_file.type.startswith('video')
