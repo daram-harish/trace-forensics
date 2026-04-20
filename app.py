@@ -31,6 +31,30 @@ st.markdown("""
     }
     
     /* --- HIGH CONTRAST FILE UPLOADER --- */
+    /* Forces a solid, distinct background color */
+    div[data-testid="stFileUploader"] {
+        background-color: #1a1f2e !important; 
+        border: 2px dashed #00f2ff !important; 
+        border-radius: 10px !important;
+        padding: 20px !important;
+    }
+    
+    /* Ensures text inside the uploader is visible */
+    div[data-testid="stFileUploader"] p, 
+    div[data-testid="stFileUploader"] span,
+    div[data-testid="stFileUploader"] section {
+        color: #ffffff !important;
+    }
+
+    /* 3. Button Coloring */
+    .stButton>button { 
+        width: 100%; 
+        background: #00f2ff !important; 
+        color: black !important; 
+        font-weight: bold; 
+    }
+    </style>
+""", unsafe_allow_html=True)
 
     div[data-testid="stFileUploader"] {
         background-color: #11141a !important; 
